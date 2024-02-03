@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>3rd Question:-<h1><hr>
+    <div>
+        <button onclick="getDateFormats()">Get the Current Date</button>
+        <p id="result"></p>
+      </div>
+
+    <script>
+        function getDateFormats() {
+          var now = new Date();
+          var dd = String(now.getDate()).padStart(2, '0');
+          var mm = String(now.getMonth() + 1).padStart(2, '0'); //January is 0!
+          var yyyy = now.getFullYear();
+        
+          var result = "MM-DD-YYYY: " + mm + "-" + dd + "-" + yyyy + "<br>";
+          result += "MM/DD/YYYY: " + mm + "/" + dd + "/" + yyyy + "<br>";
+          result += "DD-MM-YYYY: " + dd + "-" + mm + "-" + yyyy + "<br>";
+          result += "DD/MM/YYYY: " + dd + "/" + mm + "/" + yyyy + "<br>";
+        
+          document.getElementById("result").innerHTML = result;
+        }
+
+        
+     </script>
+
+</body>
+</html>
+
