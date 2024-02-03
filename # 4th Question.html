@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number to Words</title>
+</head>
+<body>
+   <h1> 4th Question:- <h1> <hr><br>
+  <h2>Enter a number (0-999):</h2><br>
+  <input type="text" id="numInput" />
+  <button onclick="convertNumberToWords()">Convert to words</button>
+  <p id="result"></p>
+
+  <script>
+    function convertNumberToWords() {
+      var numInput = document.getElementById("numInput");
+      var num = numInput.value;
+      var result = document.getElementById("result");
+
+      if (isNaN(num) || num < 0 || num > 999 || num.length > 3) {
+        result.innerHTML = "Invalid input. Please enter a number between 0 and 999 with no more than 3 digits.";
+        return;
+      }
+
+      var ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+      var tens = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+
+      if (num == 0) {
+        result.innerHTML = "Zero";
+        return;
+      }
+
+      var hundreds = Math.floor(num / 100);
+      var remainder = num % 100;
+      var tensPlace = Math.floor(remainder / 10);
+      var onesPlace = remainder % 10;
+
+      var words = "";
+      if (hundreds > 0) {
+        words += ones[hundreds] + " Hundred ";
+      }
+      if (tensPlace > 1) {
+        words += tens[tensPlace] + " ";
+        if (onesPlace > 0) {
+          words += ones[onesPlace] + " ";
+        }
+      } else {
+        words += ones[remainder] + " ";
+      }
+
+      result.innerHTML = words;
+    }
+  </script>
+</body>
+</html>
